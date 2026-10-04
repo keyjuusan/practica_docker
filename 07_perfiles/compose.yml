@@ -1,0 +1,18 @@
+name: "07"
+services:
+  frontend:
+    image: nginx:mainline-alpine3.24-slim
+    ports:
+      - "7777:80"
+
+  monitoreo:
+    image: alpine:3.23.5
+    command: sh -c "while true; do echo 'Monitoreando trafico...'; sleep 11; done"
+    profiles:
+      - herramientas_extra
+
+  tests:
+    image: alpine:3.23.5
+    command: sh -c "echo 'Iniciando pruebas... Exito.'&& sleep 5"
+    profiles:
+      - testing

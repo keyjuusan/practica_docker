@@ -1,0 +1,6 @@
+services:
+  hkr_web:
+    build:
+      context: .
+    ports:
+      - "8081:80"

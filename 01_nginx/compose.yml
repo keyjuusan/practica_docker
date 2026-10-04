@@ -1,0 +1,5 @@
+services:
+  mi_web:
+    image: nginx:mainline-alpine3.24-slim
+    ports:
+      - "8080:80"

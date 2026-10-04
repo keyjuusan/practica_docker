@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mariadb:12.3-noble
+    container_name: "mariadb_db"
+    networks:
+      - mi_red
+    volumes:
+      - db_data:/var/lib/mysql:Z
+    env_file:
+      - ./.env
+
+  web_dba:
+    image: adminer:6.0.1-standalone
+    container_name: "adminer"
+    ports:
+      - "3333:8080"
+    networks:
+      - mi_red
+    depends_on:
+      - db
+
+networks:
+  mi_red:
+    driver: bridge
+
+volumes:
+  db_data:
